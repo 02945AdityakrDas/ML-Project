@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import joblib
 import numpy as np
-from sklearn.preprocessing import StandardScaler
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -29,8 +28,7 @@ def predict():
         # Combine features into a single array
         features = np.array(
             [[age, sex, cigs_per_day, tot_chol, sys_bp, glucose]])
-        features = scaler.fit_transform(features)
-
+       
         # Predict using the model
         prediction = model.predict(features)[0]
 
