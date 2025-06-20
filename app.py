@@ -7,8 +7,7 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 
 # Load the saved model and scaler
-model = joblib.load('LogisticRegression_model_HeartDisease.pkl')
-scaler = StandardScaler()
+model = joblib.load('random_forest_chd.pkl')
 
 
 @app.route('/')
@@ -21,7 +20,7 @@ def predict():
     try:
         # Get input data from the form
         age = float(request.form['age'])
-        sex_male = float(request.form['sex_male'])
+        sex = float(request.form['sex'])
         cigs_per_day = float(request.form['cigs_per_day'])
         tot_chol = float(request.form['tot_chol'])
         sys_bp = float(request.form['sys_bp'])
@@ -29,7 +28,7 @@ def predict():
 
         # Combine features into a single array
         features = np.array(
-            [[age, sex_male, cigs_per_day, tot_chol, sys_bp, glucose]])
+            [[age, sex, cigs_per_day, tot_chol, sys_bp, glucose]])
         features = scaler.fit_transform(features)
 
         # Predict using the model
