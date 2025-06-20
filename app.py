@@ -27,7 +27,7 @@ def predict():
 
         # Combine features into a single array
         features = np.array(
-            [[age, sex, cigs_per_day, tot_chol, sys_bp, glucose]])
+            [[sex, age, cigs_per_day, tot_chol, sys_bp, glucose]])
        
         # Predict using the model
         prediction = model.predict(features)[0]
