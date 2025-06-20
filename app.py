@@ -18,8 +18,8 @@ def home():
 def predict():
     try:
         # Get input data from the form
-        age = float(request.form['age'])
         sex = float(request.form['sex'])
+        age = float(request.form['age'])
         cigs_per_day = float(request.form['cigs_per_day'])
         tot_chol = float(request.form['tot_chol'])
         sys_bp = float(request.form['sys_bp'])
